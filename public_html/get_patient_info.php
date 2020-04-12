@@ -45,7 +45,8 @@ $sql2 = "SELECT * FROM PRESCRIPTION NATURAL JOIN MEDICATION
 	 WHERE Patient_Ssn='$Patient_Ssn';";
 $sql3 = "SELECT * FROM APPOINTMENT, PROVIDER
 	 WHERE Patient_Ssn='$Patient_Ssn' AND Provider_Ssn=Ssn;";
-
+$sql4 = "SELECT * FROM DIAGNOSIS
+	 WHERE Patient_Ssn='$Patient_Ssn';";
 //if(TRUE){ 
 ?>
    <h3><p class="indented">Patient contact information</p></h3>
@@ -110,6 +111,25 @@ while($row = $result->fetch_assoc()) {
           <td><?php echo $row['Fname'] . " " . $row['Lname']?></td>
           <td><?php echo $row['Copayment']?></td>
           <td><?php echo $row['Reason_for_visit']?></td>
+      </tr>
+<?php
+}
+?>
+
+      </table>
+      <h3><p class="indented">Active conditions</p></h3>
+      <table class="table table-striped">
+        <tr>
+         <th>Condition name</th>
+	 <th>Date diagnosed</th>
+      </tr>
+<?php
+$result = $conn->query($sql4);
+while($row = $result->fetch_assoc()) {
+?>
+      <tr>
+          <td><?php echo $row['Condition_name']?></td>
+          <td><?php echo $row['Date_diagnosed']?></td>
       </tr>
 <?php
 }
