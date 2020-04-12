@@ -67,6 +67,7 @@
     text-decoration: none;
     text-transform: uppercase;
 }
+
 .form-style-8 input[type="button"]:hover, 
 .form-style-8 input[type="submit"]:hover {
     background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);

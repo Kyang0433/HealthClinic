@@ -13,12 +13,6 @@
 </head>
 <body>
 
-
-<header>
-  <h3>Displaying contents of the PROVIDER relation</h3>
-</header>
-<a href="welcome.html">Return to homepage</a>
-
 <?php
 require_once('db_setup.php');
 $sql = "USE jyoung32_1;";
@@ -28,48 +22,25 @@ if ($conn->query($sql) === TRUE) {
    echo "Error using  database: " . $conn->error;
 }
 // Query:
-$sql = "SELECT * FROM PROVIDER";
+$Fname = $_POST['Fname'];
+$Lname = $_POST['Lname'];
+$DOB = $_POST['DOB'];
+$sql = "DELETE FROM PATIENT
+	WHERE Fname='$Fname' AND Lname='$Lname' AND DOB='$DOB';";
+
 $result = $conn->query($sql);
-if($result->num_rows > 0){
 
+if ($result === TRUE) {
+    echo "Matching records deleted.<br>";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
+} 
+//$stmt = $conn->prepare("Select * from Students Where Username like ?");
+//$stmt->bind_param("s", $username);
+//$result = $stmt->execute();
+//$result = $conn->query($sql);
 ?>
-   <table class="table table-striped">
-      <tr>
-	 <th>Title</th>
-         <th>First name</th>
-         <th>Middle Name</th>
-         <th>Last name</th>
-         <th>SSN</th>
-         <th>Phone</th>
-         <th>Email</th>
-	 <th>Salary</th>
-      </tr>
-<?php
-while($row = $result->fetch_assoc()){
-
-?>
-
-      <tr>
-          <td><?php echo $row['Title']?></td>
-          <td><?php echo $row['Fname']?></td>
-          <td><?php echo $row['Mname']?></td>
-          <td><?php echo $row['Lname']?></td>
-          <td><?php echo $row['Ssn']?></td>
-          <td><?php echo $row['Phone']?></td>
-          <td><?php echo $row['Email']?></td>
-          <td><?php echo $row['Salary']?></td>
-      </tr>
-
-<?php
-}
-}
-else {
-echo "Nothing to display";
-}
-?>
-
-    </table>
-
+<a href="welcome.html">Return to homepage</a>
 <?php
 $conn->close();
 ?>  

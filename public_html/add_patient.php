@@ -42,7 +42,7 @@ $sql = "INSERT INTO PATIENT VALUES ('$Fname', '$Mname', '$Lname',
 $result = $conn->query($sql);
 
 if ($result === TRUE) {
-    echo "New record created successfully";
+    echo "New record created successfully<br>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 } 
@@ -51,6 +51,8 @@ if ($result === TRUE) {
 //$result = $stmt->execute();
 //$result = $conn->query($sql);
 ?>
+
+<a href="welcome.html">Return to homepage</a>
 
 <?php
 $conn->close();

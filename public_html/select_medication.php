@@ -13,6 +13,12 @@
 </head>
 <body>
 
+
+<header>
+  <h3>Displaying contents of the MEDICATION relation</h3>
+</header>
+<a href="welcome.html">Return to homepage</a>
+
 <?php
 require_once('db_setup.php');
 $sql = "USE jyoung32_1;";
