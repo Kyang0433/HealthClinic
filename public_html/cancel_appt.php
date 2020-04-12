@@ -22,55 +22,31 @@ if ($conn->query($sql) === TRUE) {
    echo "Error using  database: " . $conn->error;
 }
 // Query:
-
-$Appt_date = $_POST['Appt_date'];
+$Provider_Fname = $_POST['Provider_Fname'];
+$Provider_Lname = $_POST['Provider_Lname'];
 $Appt_time = $_POST['Appt_time'];
-$Provider_fname = $_POST['Provider_fname'];
-$Provider_lname = $_POST['Provider_lname'];
-$Patient_fname = $_POST['Patient_fname'];
-$Patient_lname = $_POST['Patient_lname'];
-$Patient_DOB = $_POST['Patient_DOB'];
-$Reason_for_visit = $_POST['Reason_for_visit'];
-$Copayment = $_POST['Copayment'];
-//echo $Patient_DOB;
+$Appt_date = $_POST['Appt_date'];
+$sql = "DELETE FROM APPOINTMENT
+	WHERE Appt_time='$Appt_time' AND Appt_date='$Appt_date'
+	AND ('$Provider_Fname', '$Provider_Lname') IN
+	(SELECT Fname, Lname FROM PROVIDER
+	 WHERE Ssn=Provider_Ssn);";
 
-$sql = "SELECT Ssn FROM PROVIDER
-	WHERE Fname='$Provider_fname' AND Lname='$Provider_lname';";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$Provider_Ssn=$row['Ssn'];
-$sql = "SELECT Ssn FROM PATIENT
-	WHERE Fname='$Patient_fname' AND Lname='$Patient_lname'
-	      AND DOB='$Patient_DOB';";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$Patient_Ssn=$row['Ssn'];
-
-
-$sql = "INSERT INTO APPOINTMENT VALUES
-	('$Reason_for_visit', '$Appt_time', '$Appt_date',
-	 $Copayment, '$Provider_Ssn', '$Patient_Ssn');";
-
-//echo $sql;
-#$sql = "SELECT * FROM Students where Username like 'amai2';";
+echo $sql;
 
 $result = $conn->query($sql);
 
 if ($result === TRUE) {
-    echo "New record created successfully";
+    echo "Matching records deleted.<br>";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
 } 
-
 //$stmt = $conn->prepare("Select * from Students Where Username like ?");
 //$stmt->bind_param("s", $username);
 //$result = $stmt->execute();
 //$result = $conn->query($sql);
-
 ?>
-
 <a href="welcome.html">Return to homepage</a>
-
 <?php
 $conn->close();
 ?>  
