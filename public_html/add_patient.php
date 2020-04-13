@@ -14,6 +14,7 @@
 <body>
 
 <?php
+include('type_check.php');
 require_once('db_setup.php');
 $sql = "USE jyoung32_1;";
 if ($conn->query($sql) === TRUE) {
@@ -32,6 +33,29 @@ $Email = $_POST['Email'];
 $DOB = $_POST['DOB'];
 $Insurance_provider = $_POST['Insurance_provider'];
 $Provider_Ssn = $_POST['Provider_Ssn'];
+
+if (!preg_match($Date_regex, $DOB)) {
+    echo "Invalid DOB entered.<br>";
+?>
+    <a href="welcome.html">Return to homepage</a>
+<?php
+    exit;
+}
+
+if (!preg_match($Ssn_regex, $Ssn)) {
+    echo "Invalid SSN entered.<br>";
+?>
+    <a href="welcome.html">Return to homepage</a>
+<?php
+    exit;
+}
+if (!preg_match($Ssn_regex, $Provider_Ssn)) {
+    echo "Invalid provider SSN entered.<br>";
+?>
+    <a href="welcome.html">Return to homepage</a>
+<?php
+    exit;
+}
 $sql = "INSERT INTO PATIENT VALUES ('$Fname', '$Mname', '$Lname',
 				    '$Ssn', '$Phone', '$Address',
 				    '$Email', '$DOB', '$Insurance_provider',
