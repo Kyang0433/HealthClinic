@@ -9,13 +9,13 @@
 <div class="form-style-8">
 <h2> Create new appointment </h2>
 <form action="add_appt.php" method="post">
-   Date:  <input type="text" name="Appt_date"><br>
-   Time (hh:mm:ss):  <input type="text" name="Appt_time"><br>
-   Provider first name:  <input type="text" name="Provider_fname"><br>
-   Provider last name:  <input type="text" name="Provider_lname"><br>
-   Patient first name:  <input type="text" name="Patient_fname"><br>
-   Patient last name:  <input type="text" name="Patient_lname"><br>
-   Patient DOB (yyyy-mm-dd):  <input type="text" name="Patient_DOB"><br>
+   Date:  <input type="date" name="Appt_date" required><br>
+   Time:  <input type="time" name="Appt_time"required><br>
+   Provider first name:  <input type="text" name="Provider_fname" required><br>
+   Provider last name:  <input type="text" name="Provider_lname" required><br>
+   Patient first name:  <input type="text" name="Patient_fname" required><br>
+   Patient last name:  <input type="text" name="Patient_lname" required><br>
+   Patient DOB:  <input type="date" name="Patient_DOB" required><br>
    Copayment: <input type="text" name="Copayment"><br>
    Reason for visit:  <input type="text" name="Reason_for_visit"><br>
    <input type="submit"><br><br>

@@ -32,7 +32,6 @@ $sql = "DELETE FROM APPOINTMENT
 	(SELECT Fname, Lname FROM PROVIDER
 	 WHERE Ssn=Provider_Ssn);";
 
-echo $sql;
 
 $result = $conn->query($sql);
 

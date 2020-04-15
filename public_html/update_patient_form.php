@@ -56,21 +56,22 @@ $Insurance_provider=$row['Insurance_provider'];
 $Provider_Ssn=$row['Provider_Ssn'];
 $Ssn=$row['Ssn'];
 
+
 ?>
 <div class="center">
 <div class="form-style-8">
 <h2> Update patient information</h2>
 <form action="update_patient.php" method="post">
-   First name:  <input value=<?php echo "$Fname"?> type="text" name="Fname"><br>
-   Middle name:  <input type="text" value=<?php echo "$Mname"?> name="Mname"><br>
-   Last name:  <input type="text" value=<?php echo "$Lname"?> name="Lname"><br>
-   DOB (yyyy-mm-dd):  <input type="text" value=<?php echo "$DOB"?> name="DOB"><br>
-   SSN:  <input type="text" value=<?php echo "$Ssn"?> name="Ssn"><br>
-   Phone:  <input type="text" value=<?php echo "$Phone"?> name="Phone"><br>
-   Email:  <input type="text" value=<?php echo "$Email"?> name="Email"><br>
-   Address:  <input type="text" value=<?php echo "$Address"?> name="Address"><br>
-   Insurance Co.:  <input type="text" value=<?php echo "$Insurance_provider"?> name="Insurance_provider"><br>
-   Provider SSN:  <input type="text" value=<?php echo "$Provider_Ssn"?> name="Provider_Ssn"><br>
+   First name:  <input value=<?php echo '"' . $Fname . '"'?> type="text" name="Fname" required><br>
+   Middle name:  <input type="text" value=<?php echo '"' . $Mname . '"'?> name="Mname"><br>
+   Last name:  <input type="text" value=<?php echo '"' . $Lname . '"'?> name="Lname" required><br>
+   DOB:  <input type="date" value=<?php echo '"' . $DOB . '"'?> name="DOB" required><br>
+   SSN:  <input type="text" value=<?php echo '"' . $Ssn . '"'?> name="Ssn" pattern="[0-9]{9}" required><br>
+   Phone:  <input type="text" value=<?php echo '"' . $Phone . '"'?> name="Phone"><br>
+   Email:  <input type="text" value=<?php echo '"' . $Email . '"'?> name="Email"><br>
+   Address:  <input type="text" value=<?php echo '"' . $Address . '"'?> name="Address"><br>
+   Insurance Co.:  <input type="text" value=<?php echo '"' . $Insurance_provider . '"'?> name="Insurance_provider"><br>
+   Provider SSN:  <input type="text" value=<?php echo '"' . $Provider_Ssn . '"'?> pattern="[0-9]{9}" name="Provider_Ssn"><br>
    <input type="submit"><br><br>
    <a href="welcome.html">Cancel</a>
 
