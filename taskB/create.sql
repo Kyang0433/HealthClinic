@@ -8,7 +8,8 @@ Address VARCHAR(60),
 Email VARCHAR(40),
 DOB DATE NOT NULL,
 Insurance_provider VARCHAR(20),
-Provider_Ssn CHAR(9) REFERENCES PROVIDER(Ssn));
+Provider_Ssn CHAR(9),
+FOREIGN KEY (Provider_Ssn) REFERENCES PROVIDER(Ssn));
 
 CREATE TABLE PROVIDER(
 Fname VARCHAR(15) NOT NULL,
@@ -34,39 +35,50 @@ Reason_for_visit VARCHAR(60),
 Appt_time TIME,
 Appt_date DATE,
 Copayment INT,
-Provider_Ssn CHAR(9) REFERENCES PROVIDER(Ssn),
-Patient_Ssn CHAR(9) REFERENCES PATIENT(Ssn),
+Provider_Ssn CHAR(9),
+Patient_Ssn CHAR(9),
 PRIMARY KEY (Appt_time, Appt_date, Provider_Ssn),
-UNIQUE (Appt_time, Appt_date, Patient_Ssn));
+UNIQUE (Appt_time, Appt_date, Patient_Ssn),
+FOREIGN KEY (Provider_Ssn) REFERENCES PROVIDER(Ssn),
+FOREIGN KEY (Patient_Ssn) REFERENCES PATIENT(Ssn));
 
 CREATE TABLE PRESCRIPTION(
-Brand_name VARCHAR(20) REFERENCES MEDICATION(Brand_name),
+Brand_name VARCHAR(20),
 Patient_Ssn CHAR(9) REFERENCES PATIENT(Ssn),
 Dosage VARCHAR(10) NOT NULL,
 DATE_PRESCRIBED DATE,
-PRIMARY KEY (Brand_name, Patient_Ssn));
+PRIMARY KEY (Brand_name, Patient_Ssn),
+FOREIGN KEY (Brand_name) REFERENCES MEDICATION(Brand_name),
+FOREIGN KEY (Patient_Ssn) REFERENCES PATIENT(Ssn));
 
 CREATE TABLE DIAGNOSIS(
-Condition_name VARCHAR(25) REFERENCES HEALTH_CONDITION(Condition_name),
+Condition_name VARCHAR(25),
 Patient_Ssn CHAR(9) REFERENCES PATIENT(Ssn),
 Date_diagnosed DATE,
-PRIMARY KEY (Condition_name, Patient_Ssn));
+PRIMARY KEY (Condition_name, Patient_Ssn),
+FOREIGN KEY (Condition_name) REFERENCES HEALTH_CONDITION(Condition_name));
 
 CREATE TABLE DO_NOT_MIX(
-Brand_name1 VARCHAR(20) NOT NULL REFERENCES MEDICATION(Brand_name),
-Brand_name2 VARCHAR(20) NOT NULL REFERENCES MEDICATION(Brand_name));
+Brand_name1 VARCHAR(20) NOT NULL,
+Brand_name2 VARCHAR(20) NOT NULL,
+FOREIGN KEY (Brand_name1) REFERENCES MEDICATION(Brand_name),
+FOREIGN KEY (Brand_name2) REFERENCES MEDICATION(Brand_name));
 
 CREATE TABLE TREATMENT_FOR(
 Brand_name VARCHAR(20) NOT NULL REFERENCES MEDICATION(Brand_name),
-Condition_name VARCHAR(25) NOT NULL REFERENCES HEALTH_CONDITION(Condition_name));
+Condition_name VARCHAR(25) NOT NULL,
+FOREIGN KEY (Condition_name) REFERENCES HEALTH_CONDITION(Condition_name),
+FOREIGN KEY (Brand_name) REFERENCES MEDICATION(Brand_name));
 
 CREATE TABLE SYMPTOMS (
-Condition_name VARCHAR(25) NOT NULL REFERENCES HEALTH_CONDITION(Condition_name),
-Symptom VARCHAR(30) NOT NULL);
+Condition_name VARCHAR(25) NOT NULL,
+Symptom VARCHAR(30) NOT NULL,
+FOREIGN KEY (Condition_name) REFERENCES HEALTH_CONDITION(Condition_name));
 
 CREATE TABLE SIDE_EFFECTS(
-Brand_name VARCHAR(20) NOT NULL REFERENCES MEDICATION(Brand_name),
-Side_effect VARCHAR(20) NOT NULL);
+Brand_name VARCHAR(20) NOT NULL,
+Side_effect VARCHAR(20) NOT NULL,
+FOREIGN KEY (Brand_name) REFERENCES MEDICATION(Brand_name));
 
 
 
