@@ -1,4 +1,4 @@
-"Cancer","Cellular"
+"Breast Cancer","Cancer"
 "Depression","Mental"
 "ADHD","Mental"
 "Diabetes","Metabolic"
@@ -6,6 +6,7 @@
 "COVID-19","Viral"
 "GERD","Chronic"
 "Anxiety","Mental"
+"OCD", "Mental"
 "Cystic Fibrosis","Genetic"
 "Inflammation","Allergic"
 "Tuberculosis","Bacterial"
