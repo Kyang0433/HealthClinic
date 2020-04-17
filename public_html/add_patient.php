@@ -46,11 +46,7 @@ $result = $conn->query($sql);
 if ($result === TRUE) {
     echo "New record created successfully<br>";
 } else {
-    if (strpos($conn->error, "PRIMARY")) {
-	echo "Error: SSN not unique.<br>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    echo "Error: " . $sql . "<br>" . $conn->error;
 } 
 //$stmt = $conn->prepare("Select * from Students Where Username like ?");
 //$stmt->bind_param("s", $username);
