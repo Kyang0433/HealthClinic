@@ -52,7 +52,15 @@ $result = $conn->query($sql);
 if ($result === TRUE) {
     echo "Record updated successfully<br>";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    if (strpos($conn->error, "Duplicate") !== FALSE) {
+        echo "Error: trying to insert duplicate information.<br>";
+    }
+    elseif (strpos($conn->error, "foreign") !== FALSE) {
+        echo "Error: trying to reference information that does not exist.<br>";
+    }
+    else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 } 
 //$stmt = $conn->prepare("Select * from Students Where Username like ?");
 //$stmt->bind_param("s", $username);
