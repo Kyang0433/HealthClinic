@@ -57,7 +57,7 @@ $sql = "INSERT INTO APPOINTMENT VALUES
 $result = $conn->query($sql);
 
 if ($result === TRUE) {
-    echo "New record created successfully";
+    echo "New appointment created successfully";
 } else {
     if (strpos($conn->error, "Duplicate") !== FALSE) {
         echo "Error: trying to insert duplicate information.<br>";

@@ -103,7 +103,7 @@ while($row = $result->fetch_assoc()){
 }
 }
 else {
-echo "Item not found";
+echo "No matching records found.<br>";
 }
 ?>
 
@@ -112,6 +112,8 @@ echo "Item not found";
 <?php
 $conn->close();
 ?>  
+
+<a href="welcome.html">Return to homepage</a>
 
 </body>
 </html>
