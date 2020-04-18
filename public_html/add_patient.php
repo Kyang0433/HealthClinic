@@ -38,7 +38,13 @@ $sql = "INSERT INTO PATIENT VALUES ('$Fname', '$Mname', '$Lname',
 				    '$Ssn', '$Phone', '$Address',
 				    '$Email', '$DOB', '$Insurance_provider',
 				    '$Provider_Ssn');";
+if ($Provider_Ssn == '') {
+    $sql = "INSERT INTO PATIENT VALUES ('$Fname', '$Mname', '$Lname',
+				        '$Ssn', '$Phone', '$Address',
+				        '$Email', '$DOB', '$Insurance_provider',
+				        NULL);";
 
+}
 
 
 $result = $conn->query($sql);
