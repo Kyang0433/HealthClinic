@@ -44,7 +44,8 @@ $Patient_Ssn=$row['Ssn'];
 $sql2 = "SELECT * FROM PRESCRIPTION NATURAL JOIN MEDICATION
 	 WHERE Patient_Ssn='$Patient_Ssn';";
 $sql3 = "SELECT * FROM APPOINTMENT, PROVIDER
-	 WHERE Patient_Ssn='$Patient_Ssn' AND Provider_Ssn=Ssn;";
+	 WHERE Patient_Ssn='$Patient_Ssn' AND Provider_Ssn=Ssn
+	 AND Appt_date >= CURDATE();";
 $sql4 = "SELECT * FROM DIAGNOSIS
 	 WHERE Patient_Ssn='$Patient_Ssn';";
 //if(TRUE){ 
