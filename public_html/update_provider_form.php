@@ -59,7 +59,7 @@
         <label for="Ssn">SSN: </label> <input value=<?php echo '"' . $Ssn . '"'?> type="text" name="Ssn" id="Ssn" pattern="[0-9]{9}" required><br>
         <label for="Phone">Phone Number: </label> <input value=<?php echo '"' . $Phone . '"'?> type="text" name="Phone" id="Phone" required><br>
         <label for="Email">Email: </label> <input value=<?php echo '"' . $Email . '"'?> type="text" name="Email" id="Email" required><br>
-        <label for="Salary">Salary: </label> <input value=<?php echo '"' . $Salary . '"'?> type="text" name="Salary" id="Salary" required><br>
+        <label for="Salary">Salary: </label> <input value=<?php echo '"' . $Salary . '"'?> type="number" name="Salary" id="Salary" required><br>
         <input type="submit" value="Submit">
       </form>
     </div>
