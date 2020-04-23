@@ -67,7 +67,7 @@ $Ssn=$row['Ssn'];
    Last name:  <input type="text" value=<?php echo '"' . $Lname . '"'?> name="Lname" required><br>
    DOB:  <input type="date" value=<?php echo '"' . $DOB . '"'?> name="DOB" required><br>
    SSN:  <input type="text" value=<?php echo '"' . $Ssn . '"'?> name="Ssn" pattern="[0-9]{9}" required><br>
-   Phone:  <input type="text" value=<?php echo '"' . $Phone . '"'?> name="Phone"><br>
+   Phone:  <input type="text" value=<?php echo '"' . $Phone . '"'?> pattern="[0-9]{10}" name="Phone"><br>
    Email:  <input type="text" value=<?php echo '"' . $Email . '"'?> name="Email"><br>
    Address:  <input type="text" value=<?php echo '"' . $Address . '"'?> name="Address"><br>
    Insurance Co.:  <input type="text" value=<?php echo '"' . $Insurance_provider . '"'?> name="Insurance_provider"><br>
