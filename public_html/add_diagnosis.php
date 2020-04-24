@@ -23,11 +23,23 @@ if ($conn->query($sql) === TRUE) {
    echo "Error using  database: " . $conn->error;
 }
 // Query:
-$Patient_ssn = $_POST['Patient_ssn'];
+$Patient_fname = $_POST['Patient_fname'];
+$Patient_lname = $_POST['Patient_lname'];
+$Patient_DOB = $_POST['Patient_DOB'];
+
 $Condition = $_POST['Condition'];
 
+$sql1 = "SELECT Ssn FROM PATIENT
+	 WHERE Fname='$Patient_fname' AND Lname='$Patient_lname' AND DOB='$Patient_DOB';";
 
-$sql = "INSERT INTO DIAGNOSIS VALUES ('$Condition', '$Patient_ssn', CURDATE());";
+
+$result = $conn->query($sql1);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $Patient_Ssn=$row['Ssn'];
+
+
+$sql = "INSERT INTO DIAGNOSIS VALUES ('$Condition', '$Patient_Ssn', CURDATE());";
 
 
 
@@ -50,6 +62,10 @@ if ($result === TRUE) {
 //$stmt->bind_param("s", $username);
 //$result = $stmt->execute();
 //$result = $conn->query($sql);
+}
+else {
+    echo "No matching patient found.<br>";
+}
 ?>
 
 <a href="welcome.html">Return to homepage</a>
