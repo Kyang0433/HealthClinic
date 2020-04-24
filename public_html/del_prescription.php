@@ -23,8 +23,23 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-$Patient_Ssn = $_POST['Patient_Ssn'];
+
 $Brand_name = $_POST['Brand_name'];
+
+$Patient_fname = $_POST['Patient_fname'];
+	$Patient_lname = $_POST['Patient_lname'];
+	$Patient_DOB = $_POST['Patient_DOB'];
+
+
+
+$sql1 = "SELECT Ssn FROM PATIENT
+	 WHERE Fname='$Patient_fname' AND Lname='$Patient_lname' AND DOB='$Patient_DOB';";
+
+
+$result = $conn->query($sql1);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $Patient_Ssn=$row['Ssn'];
 
 $sql = "DELETE FROM PRESCRIPTION
 	WHERE Brand_name='$Brand_name' AND Patient_Ssn='$Patient_Ssn';";
@@ -41,6 +56,10 @@ if ($result === TRUE) {
 //$stmt->bind_param("s", $username);
 //$result = $stmt->execute();
 //$result = $conn->query($sql);
+}
+else {
+    echo "Matching patient not found.<br>";
+}
 ?>
 <a href="welcome.html">Return to homepage</a>
 <?php
