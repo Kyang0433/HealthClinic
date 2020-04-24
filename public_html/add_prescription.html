@@ -10,9 +10,13 @@
 		<div class="form-style-8">
 			<h2> Add prescription </h2>
 				<form action="add_prescription.php" method="post">
-					<label for="Brand">Brand Name: </label> <input type="text" name="Brand" id="Brand" required><br>
-					<label for="Patient_ssn">Patient SSN: </label> <input type="text" name="Patient_ssn" id="Patient_ssn" required><br>
-					<label for="Dosage">Dosage: </label> <input type="text" name="Dosage" id="Dosage" required><br>
+
+					Note: Medication must already be in database. <a href="select_medication.php">View medications</a><br><br>
+					Brand Name:<input type="text" name="Brand" id="Brand" required><br>
+					Dosage: <input type="text" name="Dosage" id="Dosage" required><br>
+					Patient first name:<input type="text" name="Patient_fname" required><br>
+					Patient first name:<input type="text" name="Patient_lname" required><br>
+					Patient DOB:<input type="date" name="Patient_DOB" required><br>
 					<input type="submit" value="Submit">
 				</form>
 		</div>

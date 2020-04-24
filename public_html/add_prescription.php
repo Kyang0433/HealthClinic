@@ -24,8 +24,20 @@ if ($conn->query($sql) === TRUE) {
 }
 // Query:
 $Brand = $_POST['Brand'];
-$Patient_ssn = $_POST['Patient_ssn'];
+$Patient_fname = $_POST['Patient_fname'];
+$Patient_lname = $_POST['Patient_lname'];
+$Patient_DOB = $_POST['Patient_DOB'];
 $Dosage = $_POST['Dosage'];
+
+$sql0 = "SELECT Ssn FROM PATIENT
+	 WHERE Fname='$Patient_fname' AND Lname='$Patient_lname' AND DOB='$Patient_DOB';";
+
+
+$result = $conn->query($sql0);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $Patient_Ssn=$row['Ssn'];
 
 $sql1 = "SELECT Brand_name1, Brand_name2 FROM DO_NOT_MIX, PRESCRIPTION
 	 WHERE Patient_Ssn='$Patient_ssn' AND (Brand_name1=Brand_name AND Brand_name2='$Brand'
@@ -43,7 +55,7 @@ if($result->num_rows > 0){
 
 else {
 
-	$sql = "INSERT INTO PRESCRIPTION VALUES ('$Brand', '$Patient_ssn', '$Dosage', CURDATE());";
+	$sql = "INSERT INTO PRESCRIPTION VALUES ('$Brand', '$Patient_Ssn', '$Dosage', CURDATE());";
 
 	$result = $conn->query($sql);
 
@@ -65,6 +77,10 @@ else {
 //$stmt->bind_param("s", $username);
 //$result = $stmt->execute();
 //$result = $conn->query($sql);
+}
+else {
+    echo "Matching patient not found.<br>";
+}
 ?>
 
 <a href="welcome.html">Return to homepage</a>
