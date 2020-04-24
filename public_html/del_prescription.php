@@ -29,7 +29,7 @@ $Brand_name = $_POST['Brand_name'];
 $sql = "DELETE FROM PRESCRIPTION
 	WHERE Brand_name='$Brand_name' AND Patient_Ssn='$Patient_Ssn';";
 
-echo $sql;
+//echo $sql;
 $result = $conn->query($sql);
 
 if ($result === TRUE) {

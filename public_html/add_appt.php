@@ -32,6 +32,10 @@ $Patient_lname = $_POST['Patient_lname'];
 $Patient_DOB = $_POST['Patient_DOB'];
 $Reason_for_visit = $_POST['Reason_for_visit'];
 $Copayment = $_POST['Copayment'];
+
+if ($Copayment==null) {
+    $Copayment=25;
+}
 //echo $Patient_DOB;
 
 $sql = "SELECT Ssn FROM PROVIDER
