@@ -22,10 +22,23 @@
 		echo "Error using  database: " . $conn->error;
 	}
 // Query:
+
+	$Patient_fname = $_POST['Patient_fname'];
+	$Patient_lname = $_POST['Patient_lname'];
+	$Patient_DOB = $_POST['Patient_DOB'];
+
 	$Condition_name = $_POST['Condition_name'];
-	$Patient_ssn = $_POST['Patient_ssn'];
+
+$sql1 = "SELECT Ssn FROM PATIENT
+	 WHERE Fname='$Patient_fname' AND Lname='$Patient_lname' AND DOB='$Patient_DOB';";
+
+
+$result = $conn->query($sql1);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $Patient_Ssn=$row['Ssn'];
 	$sql = "DELETE FROM DIAGNOSIS
-	WHERE Condition_name='$Condition_name' AND Patient_ssn='$Patient_ssn';";
+	WHERE Condition_name='$Condition_name' AND Patient_Ssn='$Patient_Ssn';";
 	$result = $conn->query($sql);
 
 	if ($result === TRUE) {
@@ -37,6 +50,10 @@
 //$stmt->bind_param("s", $username);
 //$result = $stmt->execute();
 //$result = $conn->query($sql);
+	}
+	else {
+	    echo "Matching patient not found.<br>";
+	}
 	?>
 	<a href="welcome.html">Return to homepage</a>
 	<?php

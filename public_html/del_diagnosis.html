@@ -10,8 +10,10 @@
 		<div class="form-style-8">
 			<h2> Remove diagnosis </h2>
 			<form action="del_diagnosis.php" method="post">
-				<label for="Condition_name">Condition: </label>  <input type="text" name="Condition_name" id="Condition_name" required><br>
-				<label for="Patient_ssn">Patient SSN: </label>  <input type="text" name="Patient_ssn" id="Patient_ssn" required><br>
+				Condition: <input type="text" name="Condition_name" id="Condition_name" required><br>
+				Patient first name: <input type="text" name="Patient_fname" required><br>
+				Patient last name: <input type="text" name="Patient_lname" required><br>
+				Patient DOB: <input type="date" name="Patient_DOB" required><br>
 				<input type="submit"><br><br>
 				<a href="welcome.html">Cancel</a>
 
