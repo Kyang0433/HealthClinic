@@ -75,8 +75,8 @@ $sql4 = "SELECT * FROM DIAGNOSIS
       <tr>
          <th>Brand name</th>
 	 <th>Chemical name</th>
-         <th>Date prescribed</th>
          <th>Dosage</th>
+         <th>Date prescribed</th>
       </tr>
 
 <?php
