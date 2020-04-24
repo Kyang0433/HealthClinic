@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
     $Patient_Ssn=$row['Ssn'];
 
 $sql1 = "SELECT Brand_name1, Brand_name2 FROM DO_NOT_MIX, PRESCRIPTION
-	 WHERE Patient_Ssn='$Patient_ssn' AND (Brand_name1=Brand_name AND Brand_name2='$Brand'
+	 WHERE Patient_Ssn='$Patient_Ssn' AND (Brand_name1=Brand_name AND Brand_name2='$Brand'
 	 OR Brand_name2=Brand_name AND Brand_name1='$Brand');";
 
 $result = $conn->query($sql1);
