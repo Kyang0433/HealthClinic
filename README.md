@@ -15,6 +15,7 @@ This is a fun little project that emulates how we think a health clinic or hospi
 **Video**
 
 ![](health-clinic-dbms-demo.gif)
+<img src="health-clinic-dbms-demo.gif" width="480">
 
 **Entity Relation Diagram**
 
